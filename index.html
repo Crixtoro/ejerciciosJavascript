@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, papel o tijera</title>
+    <script>
+        //Declarando funciones
+        function aleatorio(min, max){
+            return Math.floor(Math.random() * (max - min +1) + min);
+        }
+
+        function mensajeEleccion(jugador, opcion){
+            if(opcion == 1){
+                alert(jugador + " elige Piedra 🪨");
+            } else if(opcion == 2) {
+                alert(jugador + " elige Papel 📄");
+            } else if(opcion == 3){
+                alert(jugador +" elige Tijera ✂️");
+            } else {
+                alert("Opción invalida");
+            }
+        }
+
+        let i = 0;
+        let countPlayer = 0;
+        let countPc = 0;
+        while (i < 3) {
+            i++;
+            // 1 es piedra, 2 es papel, 3 es tijera
+            let jugador = 0;
+            let pc = aleatorio(1, 3);
+            jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera");
+            //alert("Elegiste " +jugador); //Muestra una ventana emergente
+            
+            mensajeEleccion("Jugador", jugador);
+            mensajeEleccion("PC", pc);
+            
+            if (jugador == pc){
+                alert("Empate 🏳️");
+            } else if((jugador == 1 && pc == 3) || (jugador == 3 && pc == 2) || (jugador == 2 && pc == 1)){
+                alert("Ganaste ✌️");
+                countPlayer++;
+            } else {
+                alert("Perdiste 🫢 ");
+                countPc++
+            }
+
+            if (i == 3 && countPc == countPlayer){
+                i = 2;
+                alert("Tenemos un empate, vamos por otra más 👏");
+            }
+        }
+
+        countPlayer > countPc ? alert("Ganaste el duelo 🏆") : alert("Perdiste el duelo 😣");
+    </script>
+</head>
+<body>
+    <h1>Piedra, papel o tijera</h1>
+</body>
+</html>
